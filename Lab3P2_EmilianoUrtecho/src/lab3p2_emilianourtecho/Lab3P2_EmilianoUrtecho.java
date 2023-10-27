@@ -10,6 +10,8 @@ public class Lab3P2_EmilianoUrtecho {
     
     static Scanner escan = new Scanner(System.in);
     static List<Aplicaciones> aplicacion = new ArrayList();
+    static List<Aplicaciones>aplicacionesDescargadas = new ArrayList(); //Ocupaba otro arraylist porque no se me ocurrio una solucion para las descargas
+
     
     public static void main(String[] args) {
         int eleccion;
@@ -114,14 +116,14 @@ public class Lab3P2_EmilianoUrtecho {
             String categoria = escan.nextLine();
             categoria = escan.nextLine();
             
-            AppsUtilidad appUtil = new AppsUtilidad(categoria, nombre, desarrollador, precio, "-", 0.0, 0);
+            AppsUtilidad appUtil = new AppsUtilidad(categoria, nombre, desarrollador, precio, '-', 0.0, 0);
             aplicacion.add(appUtil);
             System.out.println("Se ha creado la aplicacion de utilidad");
         }else if (tipoApp == 2) {
             System.out.println("Ingrese que categoria es su Aplicacion: ");
             int edadRecomend = escan.nextInt();
             
-            Juegos juego = new Juegos(edadRecomend, nombre, desarrollador, precio, "-", 0.0, 0);
+            Juegos juego = new Juegos(edadRecomend, nombre, desarrollador, precio, '-', 0.0, 0);
             aplicacion.add(juego);
             System.out.println("Se ha creado su videojuego");            
         }else{
@@ -275,7 +277,6 @@ public class Lab3P2_EmilianoUrtecho {
                 char descarga = escan.next().charAt(0);
                 if (descarga == 's' || descarga == 'S' ) {
                     aplicaciones.setCantDescargas(aplicaciones.getCantDescargas() + 1);
-                    List<Aplicaciones>aplicacionesDescargadas = new ArrayList();
                     aplicacionesDescargadas.add(aplicaciones);
                     System.out.println("La aplicación " + nombre + " se ha descargado exitosamente.");
                 }else if(descarga == 'n' || descarga == 'N'){
@@ -322,7 +323,6 @@ public class Lab3P2_EmilianoUrtecho {
                 char descarga = escan.next().charAt(0);
                 if (descarga == 's' || descarga == 'S' ) {
                     aplicaciones.setCantDescargas(aplicaciones.getCantDescargas() + 1);
-                    List<Aplicaciones>aplicacionesDescargadas = new ArrayList();
                     aplicacionesDescargadas.add(aplicaciones);
                     System.out.println("La aplicación " + categoria + " se ha descargado exitosamente.");
                 }else if(descarga == 'n' || descarga == 'N'){
