@@ -368,14 +368,12 @@ public class Lab3P2_EmilianoUrtecho {
         if (aplicacion.isEmpty()) {
             System.out.println("Lo siento, pero usted no ha descargado nada");
         }else{
-            for (Aplicaciones aplicaciones : aplicacion) {
+            for (Aplicaciones aplicaciones : aplicacionesDescargadas) {
                 System.out.println("Nombre: "+aplicaciones.getNombre());
                 System.out.println("Desarrollador: "+aplicaciones.getDesarrollador());
                 System.out.println("Precio: "+aplicaciones.getDesarrollador());
                 AppsUtilidad appUtil = (AppsUtilidad)aplicaciones;
                 Juegos juego = (Juegos) aplicaciones;
-                System.out.println("Categoria: "+appUtil.getCategoria());
-                System.out.println("Edad Recomendada: "+juego.getEdadRecomendada());
                 
                 System.out.println("    -------------------------   ");
                 System.out.println();
@@ -390,7 +388,7 @@ public class Lab3P2_EmilianoUrtecho {
             String nombre = escan.nextLine();
             nombre = escan.nextLine();
             
-            for (Aplicaciones aplicaciones : aplicacion) {
+            for (Aplicaciones aplicaciones : aplicacionesDescargadas) {
                 if (aplicaciones.getNombre().equalsIgnoreCase(nombre)) {
                     aplicacion.remove(aplicaciones);
                     System.out.println("La aplicacion se ha eliminado");
