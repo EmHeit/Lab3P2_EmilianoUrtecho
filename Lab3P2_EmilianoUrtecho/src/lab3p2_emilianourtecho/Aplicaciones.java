@@ -6,14 +6,14 @@ public class Aplicaciones{
     private String nombre;
     private String desarrollador;
     private double precio;
-    private String estado;
+    private char estado;
     private double rating;
     private int cantDescargas;
 
     public Aplicaciones() {
     }
 
-    public Aplicaciones(String nombre, String desarrollador, double precio, String estado, double rating, int cantDescargas) {
+    public Aplicaciones(String nombre, String desarrollador, double precio, char estado, double rating, int cantDescargas) {
         this.nombre = nombre;
         this.desarrollador = desarrollador;
         this.precio = precio;
@@ -35,7 +35,7 @@ public class Aplicaciones{
         return precio;
     }
 
-    public String getEstado() {
+    public char getEstado() {
         return estado;
     }
 
@@ -60,7 +60,7 @@ public class Aplicaciones{
         this.precio = precio;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(char estado) {
         this.estado = estado;
     }
 

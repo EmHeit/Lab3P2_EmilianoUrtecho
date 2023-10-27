@@ -114,14 +114,14 @@ public class Lab3P2_EmilianoUrtecho {
             String categoria = escan.nextLine();
             categoria = escan.nextLine();
             
-            AppsUtilidad appUtil = new AppsUtilidad(categoria, nombre, desarrollador, precio, "Disponible", 0.0, 0);
+            AppsUtilidad appUtil = new AppsUtilidad(categoria, nombre, desarrollador, precio, "-", 0.0, 0);
             aplicacion.add(appUtil);
             System.out.println("Se ha creado la aplicacion de utilidad");
         }else if (tipoApp == 2) {
             System.out.println("Ingrese que categoria es su Aplicacion: ");
             int edadRecomend = escan.nextInt();
             
-            Juegos juego = new Juegos(edadRecomend, nombre, desarrollador, precio, "Disponible", 0.0, 0);
+            Juegos juego = new Juegos(edadRecomend, nombre, desarrollador, precio, "-", 0.0, 0);
             aplicacion.add(juego);
             System.out.println("Se ha creado su videojuego");            
         }else{
@@ -269,13 +269,25 @@ public class Lab3P2_EmilianoUrtecho {
         boolean estado = false;
         for (int i = 0; i < aplicacion.size(); i++) {
             Aplicaciones aplicaciones = aplicacion.get(i);
-            if (aplicaciones.getNombre().equalsIgnoreCase(nombre)) {
+            if (aplicaciones.getNombre().equals(nombre)) {
                 System.out.println("La aplicacion "+nombre+" se ha encontrado");
+                System.out.println("Desea descargarlo? [Si.) S / No.) N]");
+                char descarga = escan.next().charAt(0);
+                if (descarga == 's' || descarga == 'S' ) {
+                    aplicaciones.setCantDescargas(aplicaciones.getCantDescargas() + 1);
+                    List<Aplicaciones>aplicacionesDescargadas = new ArrayList();
+                    aplicacionesDescargadas.add(aplicaciones);
+                    System.out.println("La aplicación " + nombre + " se ha descargado exitosamente.");
+                }else if(descarga == 'n' || descarga == 'N'){
+                    System.out.println("Esta bien, la aplicacion no ha sido descargada");
+                }else{
+                    System.out.println("No se pudo descargar la aplicacion");
+                }
                 estado = true;
             }
         }
         if (!estado) {
-            System.out.println("Lo siento, pero no se ha encontrado ninguna aplicacion con ese nombre");
+            System.out.println("Lo siento, pero no se ha encontrado ninguna aplicacion con ese nombre o tal vez necesita escribir mejor el nombre");
         }
     }
     public static void buscarCategoria(){
@@ -301,6 +313,29 @@ public class Lab3P2_EmilianoUrtecho {
         if (!estado) {
             System.out.println("Lo siento pero no se ha encontrado ninguna app con esa categoria");
         }
+       boolean estado1 = false;
+        for (int i = 0; i < aplicacion.size(); i++) {
+            Aplicaciones aplicaciones = aplicacion.get(i);
+            if (aplicaciones.getNombre().equalsIgnoreCase(categoria)) {
+                System.out.println("La aplicacion "+categoria+" se ha encontrado");
+                System.out.println("Desea descargarlo? [Si.) S / No.) N]");
+                char descarga = escan.next().charAt(0);
+                if (descarga == 's' || descarga == 'S' ) {
+                    aplicaciones.setCantDescargas(aplicaciones.getCantDescargas() + 1);
+                    List<Aplicaciones>aplicacionesDescargadas = new ArrayList();
+                    aplicacionesDescargadas.add(aplicaciones);
+                    System.out.println("La aplicación " + categoria + " se ha descargado exitosamente.");
+                }else if(descarga == 'n' || descarga == 'N'){
+                    System.out.println("Esta bien, la aplicacion no ha sido descargada");
+                }else{
+                    System.out.println("No se pudo descargar la aplicacion");
+                }
+                estado1 = true;
+            }
+        }
+        if (!estado1) {
+            System.out.println("Lo siento, pero no se ha encontrado ninguna aplicacion con ese nombre");
+        }        
     }
     public static void biblioteca(){
         if (aplicacion.isEmpty()) {
