@@ -70,18 +70,25 @@ public class Lab3P2_EmilianoUrtecho {
         do {
             switch(eleccionAdministrador){
                 case 1://Agregar Aplicacion
+                    agregarAplicacion();
                     break;
                 case 2://Biblioteca
+                    Biblioteca(aplicacion);
                     break;
                 case 3://Actualizar Aplicacion
+                    actualizarAplicacion(aplicacion);
                     break;
                 case 4://Eliminar Aplicacion
+                    eliminarAplicacion(aplicacion);
                     break;
                 case 5://Estadistica de Desarrollador
+                    estadisticaDeDesarrollador(aplicacion);
                     break;
                 case 6://SALIR
+                    System.out.println("Si desea salir, presione otra vez la tecla 6 o si lo desea elija otra opcion");
                     break;
                 default://NOSE
+                    System.out.println("Lo siento, pero la tecla que presiono es invalida :(");
                     break;
             }
         } while (eleccionAdministrador != 6);
@@ -107,21 +114,107 @@ public class Lab3P2_EmilianoUrtecho {
             String categoria = escan.nextLine();
             categoria = escan.nextLine();
             
-            AppsUtilidad appUtil = new AppsUtilidad(nombre, desarrollador, precio,"Disponible", 0.0, 0);
+            AppsUtilidad appUtil = new AppsUtilidad(categoria, nombre, desarrollador, precio, "Disponible", 0.0, 0);
             aplicacion.add(appUtil);
+            System.out.println("Se ha creado la aplicacion de utilidad");
+        }else if (tipoApp == 2) {
+            System.out.println("Ingrese que categoria es su Aplicacion: ");
+            int edadRecomend = escan.nextInt();
+            
+            Juegos juego = new Juegos(edadRecomend, nombre, desarrollador, precio, "Disponible", 0.0, 0);
+            aplicacion.add(juego);
+            System.out.println("Se ha creado su videojuego");            
+        }else{
+            System.out.println("Lo siento pero la tecla que ha ingresado es invalida");
         }
         
     }
-    public static void Biblioteca(){
-        
+    public static void Biblioteca(List<Aplicaciones> aplicacion){
+        if (aplicacion.isEmpty()) {
+            System.out.println("No se puede utilizar esta opcion, porque no hay aplicaciones");
+        }else{
+            System.out.println("Aplicaciones de utilidad: ");
+            for (Aplicaciones aplicaciones : aplicacion) {
+                if (aplicacion instanceof AppsUtilidad) {
+                    System.out.println("- Nombre: "+ ((AppsUtilidad) aplicacion).getNombre());
+                    System.out.println("- Desarrollador: "+ ((AppsUtilidad)aplicacion).getDesarrollador());
+                    System.out.println("- Precio: "+ ((AppsUtilidad)aplicacion).getPrecio());
+                    System.out.println("- Categoria: "+((AppsUtilidad)aplicacion).getCategoria());
+                    System.out.println();
+                    System.out.println();
+                }
+            }
+            
+            System.out.println("Aplicaciones de Juegos: ");
+            for (Aplicaciones aplicaciones : aplicacion) {
+                if (aplicacion instanceof Juegos) {
+                    System.out.println("- Nombre: "+ ((Juegos) aplicacion).getNombre());
+                    System.out.println("- Desarrollador: "+ ((Juegos) aplicacion).getDesarrollador());
+                    System.out.println("- Precio: "+((Juegos) aplicacion).getPrecio());
+                    System.out.println("- Edad Recomendada: "+((Juegos) aplicacion).getEdadRecomendada());
+                    System.out.println();
+                    System.out.println();
+                }
+            }
+        }
     }
-    public static void actualizarAplicacion(){
+    public static void actualizarAplicacion(List<Aplicaciones> aplicacion){ //Modificar Aplicacion
+        System.out.println("Ingrese el nombre de la aplicacion que va actualizar: ");
+        String nombre = escan.nextLine();
+        nombre = escan.nextLine();
         
+        for (Aplicaciones aplicaciones : aplicacion) {
+            if (aplicaciones.getNombre().equalsIgnoreCase(nombre)) {
+                System.out.println("Si no quiere modificar alguna de estas opciones solo ponga lo mismo");
+                System.out.println();
+                System.out.println("Ingrese el nuevo nombre de la app: ");
+                String nuevoNombre = escan.nextLine();
+                nuevoNombre = escan.nextLine();
+                aplicaciones.setNombre(nuevoNombre);
+                
+                System.out.println("Ingrese el nuevo precio: ");
+                double nuevoPrecio = escan.nextDouble();
+                aplicaciones.setPrecio(nuevoPrecio);
+                
+                System.out.println("La aplicacion '"+nombre+"' se ha actualizado con exito!!!");
+                
+            }
+        }
     }
-    public static void eliminarAplicacion(){
-        
+    public static void eliminarAplicacion(List<Aplicaciones> aplicacion){
+        if (aplicacion.isEmpty()) {
+            System.out.println("No puede eliminar algo que esta vacio");
+        }else{
+            System.out.print("Ingrese el nombre de la aplicacion que desea eliminar: ");
+            String nombre = escan.nextLine();
+            nombre = escan.nextLine();
+            
+            for (Aplicaciones aplicaciones : aplicacion) {
+                if (aplicaciones.getNombre().equalsIgnoreCase(nombre)) {
+                    aplicacion.remove(aplicaciones);
+                    System.out.println("La aplicacion se ha eliminado");
+                }else{
+                    System.out.println("No puedes eliminar algo que no existe");
+                }
+            }
+        }
     }
-    public static void estadisticaDeDesarrollador(){
+    public static void estadisticaDeDesarrollador(List<Aplicaciones>aplicacion){
+        System.out.println("Estadistica: ");
+        for (Aplicaciones aplicaciones : aplicacion) {
+            System.out.println("Nombre de la aplicacion: "+aplicaciones.getNombre());
+            if (aplicaciones.getCantDescargas() == 0) {
+                System.out.println("La app no tiene ninguna descarga");
+            }else{
+                System.out.println("Numero de Descargas: "+aplicaciones.getCantDescargas());
+            }
+            if (aplicaciones.getRating() == 0.0) {
+                System.out.println("La app no tiene ningun RATING");
+            }else{
+                System.out.println("Ratings "+aplicaciones.getRating());
+            }
+            System.out.println("    --------------  ");
+        }
         
     }
     //Metodos de Usuario
@@ -142,25 +235,83 @@ public class Lab3P2_EmilianoUrtecho {
         do {
             switch(eleccionUsuario){
                 case 1://Buscar por Nombre
+                    buscarNombre();
                     break;
                 case 2://Buscar por Categoria
+                    buscarCategoria();
                     break;
                 case 3://Biblioteca
+                    biblioteca();
                     break;
                 case 4://Mostrar Descargas
+                    mostrarDescargas();
                     break;
                 case 5://Eliminar Descarga
+                    eliminarDescarga();
                     break;
                 case 6://Calificar Aplicacion
+                    calificarAplicacion();
                     break;
                 case 7://SALIR
+                    System.out.println("Si desea salir, presione otra vez la tecla 7 o elija otra opcion");
                     break;
                 default://No se
+                    System.out.println("Lo siento, pero la tecla que ha seleccionado es invalida");
                     break;
             }
         } while (eleccionUsuario != 7);
     }
-    
-    
-    
+    public static void buscarNombre(){
+        System.out.print("Ingrese el nombre de la aplicacion: ");
+        String nombre = escan.nextLine();
+        nombre = escan.nextLine();
+        
+        boolean estado = false;
+        for (int i = 0; i < aplicacion.size(); i++) {
+            Aplicaciones aplicaciones = aplicacion.get(i);
+            if (aplicaciones.getNombre().equalsIgnoreCase(nombre)) {
+                System.out.println("La aplicacion "+nombre+" se ha encontrado");
+                estado = true;
+            }
+        }
+        if (!estado) {
+            System.out.println("Lo siento, pero no se ha encontrado ninguna aplicacion con ese nombre");
+        }
+    }
+    public static void buscarCategoria(){
+        System.out.println("Ingrese una categoria: ");
+        String categoria = escan.nextLine();
+        categoria = escan.nextLine();
+        
+        boolean estado = false;
+        for (Aplicaciones aplicaciones : aplicacion) {
+            if (aplicaciones instanceof AppsUtilidad) {
+                AppsUtilidad appUtil = (AppsUtilidad) aplicaciones;
+                if (appUtil.getCategoria().equalsIgnoreCase(categoria)) {
+                    System.out.println("Nombre: "+aplicaciones.getNombre());
+                    System.out.println("Desarrollador: "+aplicaciones.getDesarrollador());
+                    System.out.println("Precio: " + aplicaciones.getPrecio());
+                    System.out.println("Categoria: "+ appUtil.getCategoria());
+                    System.out.println("");
+                    System.out.println("    ---------------------   ");
+                    estado = true;
+                }
+            }
+        }
+        if (!estado) {
+            System.out.println("Lo siento pero no se ha encontrado ninguna app con esa categoria");
+        }
+    }
+    public static void biblioteca(){
+        
+    }
+    public static void mostrarDescargas(){
+        
+    }
+    public static void eliminarDescarga(){
+        
+    }
+    public static void calificarAplicacion(){
+        
+    }
 }
