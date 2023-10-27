@@ -8,6 +8,6 @@ package lab3p2_emilianourtecho;
  *
  * @author emili
  */
-public class Juegos {
+public class AppsUtilidad {
     
 }
