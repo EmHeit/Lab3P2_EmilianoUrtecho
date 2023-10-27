@@ -404,7 +404,7 @@ public class Lab3P2_EmilianoUrtecho {
         nombre = escan.nextLine();
         
         boolean estado = false;
-        for (int i = 0; i < aplicacion.size(); i++) {
+        for (int i = 0; i < aplicacionesDescargadas.size(); i++) {
             Aplicaciones aplicaciones = aplicacion.get(i);
             if (aplicaciones.getNombre().equalsIgnoreCase(nombre)) {
                 System.out.println("Ingrese su calificacion del 1 - 5 sobre la aplicacion "+nombre+": ");
