@@ -2,18 +2,18 @@
 package lab3p2_emilianourtecho;
 
 
-public class Aplicaciones {
+public class Aplicaciones{
     private String nombre;
     private String desarrollador;
     private double precio;
-    private boolean estado;
+    private String estado;
     private double rating;
     private int cantDescargas;
 
     public Aplicaciones() {
     }
 
-    public Aplicaciones(String nombre, String desarrollador, double precio, boolean estado, double rating, int cantDescargas) {
+    public Aplicaciones(String nombre, String desarrollador, double precio, String estado, double rating, int cantDescargas) {
         this.nombre = nombre;
         this.desarrollador = desarrollador;
         this.precio = precio;
@@ -35,7 +35,7 @@ public class Aplicaciones {
         return precio;
     }
 
-    public boolean isEstado() {
+    public String getEstado() {
         return estado;
     }
 
@@ -60,7 +60,7 @@ public class Aplicaciones {
         this.precio = precio;
     }
 
-    public void setEstado(boolean estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 

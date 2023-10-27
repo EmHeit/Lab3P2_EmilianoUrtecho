@@ -1,13 +1,24 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package lab3p2_emilianourtecho;
 
-/**
- *
- * @author emili
- */
-public class Juegos {
+
+public class Juegos extends Aplicaciones{
+    private int edadRecomendada;
+
+    public Juegos(int edadRecomendada, String nombre, String desarrollador, double precio, String estado, double rating, int cantDescargas) {
+        super(nombre, desarrollador, precio, estado, rating, cantDescargas);
+        this.edadRecomendada = edadRecomendada;
+    }
+
+    //getters
+    public int getEdadRecomendada() {
+        return edadRecomendada;
+    }
+
+    //setters
+    public void setEdadRecomendada(int edadRecomendada) {
+        this.edadRecomendada = edadRecomendada;
+    }
+    
     
 }

@@ -1,13 +1,25 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package lab3p2_emilianourtecho;
 
-/**
- *
- * @author emili
- */
-public class AppsUtilidad {
+
+public class AppsUtilidad extends Aplicaciones{
+    private String categoria;
+
+    public AppsUtilidad(String categoria, String nombre, String desarrollador, double precio, String estado, double rating, int cantDescargas) {
+        super(nombre, desarrollador, precio, estado, rating, cantDescargas);
+        this.categoria = categoria;
+    }
+
+    //getters
+    public String getCategoria() {
+        return categoria;
+    }
+
+    //setters
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+    
+    
     
 }
